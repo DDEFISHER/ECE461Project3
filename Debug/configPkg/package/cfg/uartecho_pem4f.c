@@ -1328,8 +1328,11 @@ ti_sysbios_BIOS_Module_State__ ti_sysbios_BIOS_Module__state__V;
  * ======== ti.sysbios.family.arm.m3.Hwi DECLARATIONS ========
  */
 
+/* --> ADC14_IRQHandler */
+extern xdc_Void ADC14_IRQHandler(xdc_UArg);
+
 /* Object__table__V */
-ti_sysbios_family_arm_m3_Hwi_Object__ ti_sysbios_family_arm_m3_Hwi_Object__table__V[2];
+ti_sysbios_family_arm_m3_Hwi_Object__ ti_sysbios_family_arm_m3_Hwi_Object__table__V[3];
 
 /* Module_State__ */
 typedef struct ti_sysbios_family_arm_m3_Hwi_Module_State__ {
@@ -2083,7 +2086,7 @@ typedef struct xdc_runtime_Text_Module_State__ {
 xdc_runtime_Text_Module_State__ xdc_runtime_Text_Module__state__V;
 
 /* --> xdc_runtime_Text_charTab__A */
-const __T1_xdc_runtime_Text_charTab xdc_runtime_Text_charTab__A[7889];
+const __T1_xdc_runtime_Text_charTab xdc_runtime_Text_charTab__A[7896];
 
 /* --> xdc_runtime_Text_nodeTab__A */
 const __T1_xdc_runtime_Text_nodeTab xdc_runtime_Text_nodeTab__A[63];
@@ -3663,8 +3666,17 @@ ti_sysbios_family_arm_m3_Hwi_Module__ ti_sysbios_family_arm_m3_Hwi_Module__root_
 };
 
 /* Object__table__V */
-ti_sysbios_family_arm_m3_Hwi_Object__ ti_sysbios_family_arm_m3_Hwi_Object__table__V[2] = {
+ti_sysbios_family_arm_m3_Hwi_Object__ ti_sysbios_family_arm_m3_Hwi_Object__table__V[3] = {
     {/* instance#0 */
+        0,
+        ((xdc_UArg)(0x0)),  /* arg */
+        ((xdc_Void(*)(xdc_UArg))((xdc_Fxn)ADC14_IRQHandler)),  /* fxn */
+        ((xdc_UArg)(0x3)),  /* irp */
+        (xdc_UInt8)0xff,  /* priority */
+        (xdc_Int16)0x28,  /* intNum */
+        ((void*)0),  /* hookEnv */
+    },
+    {/* instance#1 */
         0,
         ((xdc_UArg)((void*)(ti_sysbios_family_arm_m3_Timer_Handle)&ti_sysbios_family_arm_m3_Timer_Object__table__V[0])),  /* arg */
         ((xdc_Void(*)(xdc_UArg))((xdc_Fxn)ti_sysbios_family_arm_m3_Timer_periodicStub__I)),  /* fxn */
@@ -3673,7 +3685,7 @@ ti_sysbios_family_arm_m3_Hwi_Object__ ti_sysbios_family_arm_m3_Hwi_Object__table
         (xdc_Int16)0xf,  /* intNum */
         ((void*)0),  /* hookEnv */
     },
-    {/* instance#1 */
+    {/* instance#2 */
         0,
         ((xdc_UArg)(0x0)),  /* arg */
         ((xdc_Void(*)(xdc_UArg))((xdc_Fxn)ti_sysbios_family_arm_msp432_Timer_periodicStub__E)),  /* fxn */
@@ -3789,7 +3801,7 @@ __FAR__ const CT__ti_sysbios_family_arm_m3_Hwi_Module__startupDoneFxn ti_sysbios
 
 /* Object__count__C */
 #pragma DATA_SECTION(ti_sysbios_family_arm_m3_Hwi_Object__count__C, ".const:ti_sysbios_family_arm_m3_Hwi_Object__count__C");
-__FAR__ const CT__ti_sysbios_family_arm_m3_Hwi_Object__count ti_sysbios_family_arm_m3_Hwi_Object__count__C = 2;
+__FAR__ const CT__ti_sysbios_family_arm_m3_Hwi_Object__count ti_sysbios_family_arm_m3_Hwi_Object__count__C = 3;
 
 /* Object__heap__C */
 #pragma DATA_SECTION(ti_sysbios_family_arm_m3_Hwi_Object__heap__C, ".const:ti_sysbios_family_arm_m3_Hwi_Object__heap__C");
@@ -4155,7 +4167,7 @@ ti_sysbios_family_arm_m3_Timer_Object__ ti_sysbios_family_arm_m3_Timer_Object__t
             (xdc_Bits32)0x0,  /* hi */
             (xdc_Bits32)0x0,  /* lo */
         },  /* extFreq */
-        (ti_sysbios_family_arm_m3_Hwi_Handle)&ti_sysbios_family_arm_m3_Hwi_Object__table__V[0],  /* hwi */
+        (ti_sysbios_family_arm_m3_Hwi_Handle)&ti_sysbios_family_arm_m3_Hwi_Object__table__V[1],  /* hwi */
     },
 };
 
@@ -4526,7 +4538,7 @@ ti_sysbios_family_arm_msp432_Timer_Object__ ti_sysbios_family_arm_msp432_Timer_O
             (xdc_Bits32)0x0,  /* hi */
             (xdc_Bits32)0x8000,  /* lo */
         },  /* frequency */
-        (ti_sysbios_family_arm_m3_Hwi_Handle)&ti_sysbios_family_arm_m3_Hwi_Object__table__V[1],  /* hwi */
+        (ti_sysbios_family_arm_m3_Hwi_Handle)&ti_sysbios_family_arm_m3_Hwi_Object__table__V[2],  /* hwi */
         (xdc_UInt)0x0,  /* prevThreshold */
         (xdc_UInt)0x0,  /* savedCurrCount */
         (xdc_UInt32)0x0,  /* rollovers */
@@ -9087,7 +9099,7 @@ xdc_runtime_Text_Module_State__ xdc_runtime_Text_Module__state__V = {
 
 /* --> xdc_runtime_Text_charTab__A */
 #pragma DATA_SECTION(xdc_runtime_Text_charTab__A, ".const:xdc_runtime_Text_charTab__A");
-const __T1_xdc_runtime_Text_charTab xdc_runtime_Text_charTab__A[7889] = {
+const __T1_xdc_runtime_Text_charTab xdc_runtime_Text_charTab__A[7896] = {
     (xdc_Char)0x0,  /* [0] */
     (xdc_Char)0x41,  /* [1] */
     (xdc_Char)0x5f,  /* [2] */
@@ -16931,52 +16943,59 @@ const __T1_xdc_runtime_Text_charTab xdc_runtime_Text_charTab__A[7889] = {
     (xdc_Char)0x73,  /* [7840] */
     (xdc_Char)0x6b,  /* [7841] */
     (xdc_Char)0x0,  /* [7842] */
-    (xdc_Char)0x4c,  /* [7843] */
-    (xdc_Char)0x6f,  /* [7844] */
-    (xdc_Char)0x61,  /* [7845] */
-    (xdc_Char)0x64,  /* [7846] */
-    (xdc_Char)0x20,  /* [7847] */
-    (xdc_Char)0x4c,  /* [7848] */
-    (xdc_Char)0x6f,  /* [7849] */
-    (xdc_Char)0x67,  /* [7850] */
-    (xdc_Char)0x67,  /* [7851] */
-    (xdc_Char)0x65,  /* [7852] */
-    (xdc_Char)0x72,  /* [7853] */
-    (xdc_Char)0x0,  /* [7854] */
-    (xdc_Char)0x4d,  /* [7855] */
-    (xdc_Char)0x61,  /* [7856] */
-    (xdc_Char)0x69,  /* [7857] */
-    (xdc_Char)0x6e,  /* [7858] */
-    (xdc_Char)0x20,  /* [7859] */
-    (xdc_Char)0x4c,  /* [7860] */
-    (xdc_Char)0x6f,  /* [7861] */
-    (xdc_Char)0x67,  /* [7862] */
-    (xdc_Char)0x67,  /* [7863] */
-    (xdc_Char)0x65,  /* [7864] */
-    (xdc_Char)0x72,  /* [7865] */
-    (xdc_Char)0x0,  /* [7866] */
-    (xdc_Char)0x53,  /* [7867] */
-    (xdc_Char)0x59,  /* [7868] */
-    (xdc_Char)0x53,  /* [7869] */
-    (xdc_Char)0x42,  /* [7870] */
-    (xdc_Char)0x49,  /* [7871] */
-    (xdc_Char)0x4f,  /* [7872] */
-    (xdc_Char)0x53,  /* [7873] */
-    (xdc_Char)0x20,  /* [7874] */
-    (xdc_Char)0x53,  /* [7875] */
-    (xdc_Char)0x79,  /* [7876] */
-    (xdc_Char)0x73,  /* [7877] */
-    (xdc_Char)0x74,  /* [7878] */
-    (xdc_Char)0x65,  /* [7879] */
-    (xdc_Char)0x6d,  /* [7880] */
+    (xdc_Char)0x6d,  /* [7843] */
+    (xdc_Char)0x33,  /* [7844] */
+    (xdc_Char)0x48,  /* [7845] */
+    (xdc_Char)0x77,  /* [7846] */
+    (xdc_Char)0x69,  /* [7847] */
+    (xdc_Char)0x30,  /* [7848] */
+    (xdc_Char)0x0,  /* [7849] */
+    (xdc_Char)0x4c,  /* [7850] */
+    (xdc_Char)0x6f,  /* [7851] */
+    (xdc_Char)0x61,  /* [7852] */
+    (xdc_Char)0x64,  /* [7853] */
+    (xdc_Char)0x20,  /* [7854] */
+    (xdc_Char)0x4c,  /* [7855] */
+    (xdc_Char)0x6f,  /* [7856] */
+    (xdc_Char)0x67,  /* [7857] */
+    (xdc_Char)0x67,  /* [7858] */
+    (xdc_Char)0x65,  /* [7859] */
+    (xdc_Char)0x72,  /* [7860] */
+    (xdc_Char)0x0,  /* [7861] */
+    (xdc_Char)0x4d,  /* [7862] */
+    (xdc_Char)0x61,  /* [7863] */
+    (xdc_Char)0x69,  /* [7864] */
+    (xdc_Char)0x6e,  /* [7865] */
+    (xdc_Char)0x20,  /* [7866] */
+    (xdc_Char)0x4c,  /* [7867] */
+    (xdc_Char)0x6f,  /* [7868] */
+    (xdc_Char)0x67,  /* [7869] */
+    (xdc_Char)0x67,  /* [7870] */
+    (xdc_Char)0x65,  /* [7871] */
+    (xdc_Char)0x72,  /* [7872] */
+    (xdc_Char)0x0,  /* [7873] */
+    (xdc_Char)0x53,  /* [7874] */
+    (xdc_Char)0x59,  /* [7875] */
+    (xdc_Char)0x53,  /* [7876] */
+    (xdc_Char)0x42,  /* [7877] */
+    (xdc_Char)0x49,  /* [7878] */
+    (xdc_Char)0x4f,  /* [7879] */
+    (xdc_Char)0x53,  /* [7880] */
     (xdc_Char)0x20,  /* [7881] */
-    (xdc_Char)0x4c,  /* [7882] */
-    (xdc_Char)0x6f,  /* [7883] */
-    (xdc_Char)0x67,  /* [7884] */
-    (xdc_Char)0x67,  /* [7885] */
+    (xdc_Char)0x53,  /* [7882] */
+    (xdc_Char)0x79,  /* [7883] */
+    (xdc_Char)0x73,  /* [7884] */
+    (xdc_Char)0x74,  /* [7885] */
     (xdc_Char)0x65,  /* [7886] */
-    (xdc_Char)0x72,  /* [7887] */
-    (xdc_Char)0x0,  /* [7888] */
+    (xdc_Char)0x6d,  /* [7887] */
+    (xdc_Char)0x20,  /* [7888] */
+    (xdc_Char)0x4c,  /* [7889] */
+    (xdc_Char)0x6f,  /* [7890] */
+    (xdc_Char)0x67,  /* [7891] */
+    (xdc_Char)0x67,  /* [7892] */
+    (xdc_Char)0x65,  /* [7893] */
+    (xdc_Char)0x72,  /* [7894] */
+    (xdc_Char)0x0,  /* [7895] */
 };
 
 /* --> xdc_runtime_Text_nodeTab__A */
@@ -17334,7 +17353,7 @@ __FAR__ const CT__xdc_runtime_Text_nodeTab xdc_runtime_Text_nodeTab__C = ((CT__x
 
 /* charCnt__C */
 #pragma DATA_SECTION(xdc_runtime_Text_charCnt__C, ".const:xdc_runtime_Text_charCnt__C");
-__FAR__ const CT__xdc_runtime_Text_charCnt xdc_runtime_Text_charCnt__C = (xdc_Int16)0x1ed1;
+__FAR__ const CT__xdc_runtime_Text_charCnt xdc_runtime_Text_charCnt__C = (xdc_Int16)0x1ed8;
 
 /* nodeCnt__C */
 #pragma DATA_SECTION(xdc_runtime_Text_nodeCnt__C, ".const:xdc_runtime_Text_nodeCnt__C");
@@ -22376,4 +22395,11 @@ __FAR__ int (* volatile __xdc__init__addr)(void) = &__xdc__init;
 /*
  * ======== PROGRAM GLOBALS ========
  */
+
+#ifdef __GNUC__
+#ifndef __TI_COMPILER_VERSION__
+    __attribute__ ((externally_visible))
+#endif
+#endif
+const ti_sysbios_family_arm_m3_Hwi_Handle m3Hwi0 = (ti_sysbios_family_arm_m3_Hwi_Handle)((ti_sysbios_family_arm_m3_Hwi_Handle)&ti_sysbios_family_arm_m3_Hwi_Object__table__V[0]);
 

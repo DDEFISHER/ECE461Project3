@@ -64,12 +64,17 @@ Task_Struct task0Struct;
 Char task0Stack[TASKSTACKSIZE];
 /* Graphic library context */
 Graphics_Context g_sContext;
+
+/* ADC results buffer */
+static uint16_t resultsBuffer[3];
+
 /*
  *  ======== echoFxn ========
  *  Task for this function is created statically. See the project's .cfg file.
  */
 Void echoFxn(UArg arg0, UArg arg1)
 {
+
 
     int8_t input_x[] = "      ";
     int8_t input_y[] = "      ";
@@ -147,6 +152,49 @@ Void echoFxn(UArg arg0, UArg arg1)
 
     }
 }
+void init_adc()
+{
+    /* Configures Pin 4.0, 4.2, and 6.1 as ADC input */
+    MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P4, GPIO_PIN0 | GPIO_PIN2, GPIO_TERTIARY_MODULE_FUNCTION);
+    MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P6, GPIO_PIN1, GPIO_TERTIARY_MODULE_FUNCTION);
+
+    /* Initializing ADC (ADCOSC/64/8) */
+    MAP_ADC14_enableModule();
+    MAP_ADC14_initModule(((uint32_t)0x00000000), ((uint32_t)0xC0000000) , ((uint32_t)0x01C00000),
+            0);
+
+    /* Configuring ADC Memory (ADC_MEM0 - ADC_MEM2 (A11, A13, A14)  with no repeat)
+         * with internal 2.5v reference */
+    MAP_ADC14_configureMultiSequenceMode(ADC_MEM0, ADC_MEM2, true);
+    MAP_ADC14_configureConversionMemory(ADC_MEM0,
+    		((uint32_t)0x00000000),
+			((uint32_t)0x0000000E), ADC_NONDIFFERENTIAL_INPUTS);
+
+    MAP_ADC14_configureConversionMemory(ADC_MEM1,
+    		((uint32_t)0x00000000),
+			((uint32_t)0x0000000D), ADC_NONDIFFERENTIAL_INPUTS);
+
+    MAP_ADC14_configureConversionMemory(ADC_MEM2,
+    		((uint32_t)0x00000000),
+			((uint32_t)0x0000000B), ADC_NONDIFFERENTIAL_INPUTS);
+
+    /* Enabling the interrupt when a conversion on channel 2 (end of sequence)
+     *  is complete and enabling conversions */
+    MAP_ADC14_enableInterrupt(((uint32_t)0x00000004) );
+
+    /* Enabling Interrupts */
+    MAP_Interrupt_enableInterrupt(INT_ADC14);
+    MAP_Interrupt_enableMaster();
+
+    /* Setting up the sample timer to automatically step through the sequence
+     * convert.
+     */
+    MAP_ADC14_enableSampleTimer(((uint32_t)0x00000080));
+
+    /* Triggering the start of the sample */
+    MAP_ADC14_enableConversion();
+    MAP_ADC14_toggleConversionTrigger();
+}
 void init_clocks()
 {
 	/* Initializes Clock System */
@@ -166,6 +214,7 @@ int main(void)
     Board_initGPIO();
     Board_initUART();
     init_clocks();
+    init_adc();
 
     /* Construct BIOS objects */
     Task_Params taskParams;
@@ -176,10 +225,10 @@ int main(void)
     taskParams.instance->name = "echo";
     Task_construct(&task0Struct, (Task_FuncPtr)echoFxn, &taskParams, NULL);
 
+
     /* Turn on user LED */
     GPIO_write(Board_LED0, Board_LED_ON);
     GPIO_write(Board_LED1, Board_LED_ON);
-
 
     System_flush();
 
@@ -188,4 +237,23 @@ int main(void)
 
     return (0);
 }
+/* This interrupt is fired whenever a conversion is completed and placed in
+ * ADC_MEM2. This signals the end of conversion and the results array is
+ * grabbed and placed in resultsBuffer */
+void ADC14_IRQHandler(void)
+{
+    uint64_t status;
 
+    status = MAP_ADC14_getEnabledInterruptStatus();
+    MAP_ADC14_clearInterruptFlag(status);
+
+    /* ADC_MEM2 conversion completed */
+    if(status & ((uint32_t)0x00000004))
+    {
+        /* Store ADC14 conversion results */
+        resultsBuffer[0] = ADC14_getResult(ADC_MEM0);
+        resultsBuffer[1] = ADC14_getResult(ADC_MEM1);
+        resultsBuffer[2] = ADC14_getResult(ADC_MEM2);
+    }
+
+}
