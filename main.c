@@ -39,13 +39,17 @@
 #include "Crystalfontz128x128_ST7735.h"
 
 
-/* XDCtools Header files */
+/* XDC module Headers */
 #include <xdc/std.h>
 #include <xdc/runtime/System.h>
+#include <xdc/cfg/global.h>
 
-/* BIOS Header files */
+/* BIOS module Headers */
 #include <ti/sysbios/BIOS.h>
+#include <ti/sysbios/knl/Swi.h>
 #include <ti/sysbios/knl/Task.h>
+#include <ti/sysbios/knl/Clock.h>
+#include <ti/sysbios/knl/Semaphore.h>
 
 /* TI-RTOS Header files */
 #include <ti/drivers/GPIO.h>
@@ -74,8 +78,6 @@ static uint16_t resultsBuffer[3];
  */
 Void echoFxn(UArg arg0, UArg arg1)
 {
-
-
     int8_t input_x[] = "      ";
     int8_t input_y[] = "      ";
     int8_t input_z[] = "      ";
@@ -98,27 +100,6 @@ Void echoFxn(UArg arg0, UArg arg1)
     }
 
     //UART_write(uart, echoPrompt, sizeof(echoPrompt));
-
-
-
-    /* Initializes display */
-    Crystalfontz128x128_Init();
-
-    /* Set default screen orientation */
-    Crystalfontz128x128_SetOrientation(LCD_ORIENTATION_UP);
-
-    /* Initializes graphics context */
-    Graphics_initContext(&g_sContext, &g_sCrystalfontz128x128);
-    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_RED);
-    Graphics_setBackgroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
-    GrContextFontSet(&g_sContext, &g_sFontFixed6x8);
-    Graphics_clearDisplay(&g_sContext);
-    Graphics_drawStringCentered(&g_sContext,
-                                    "Project3",
-                                     AUTO_STRING_LENGTH,
-                                     64,
-                                     64,
-                                     OPAQUE_TEXT);
 
     while (1) {
 
@@ -149,8 +130,31 @@ Void echoFxn(UArg arg0, UArg arg1)
                                   64,
                                   60,
                                   OPAQUE_TEXT);*/
+      MAP_Interrupt_enableInterrupt(INT_ADC14);
 
     }
+}
+void init_lcd()
+{
+    /* Initializes display */
+    Crystalfontz128x128_Init();
+
+    /* Set default screen orientation */
+    Crystalfontz128x128_SetOrientation(LCD_ORIENTATION_UP);
+
+    /* Initializes graphics context */
+    Graphics_initContext(&g_sContext, &g_sCrystalfontz128x128);
+    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_RED);
+    Graphics_setBackgroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
+    GrContextFontSet(&g_sContext, &g_sFontFixed6x8);
+    Graphics_clearDisplay(&g_sContext);
+
+    Graphics_drawStringCentered(&g_sContext,
+                                    "Project3",
+                                     AUTO_STRING_LENGTH,
+                                     64,
+                                     64,
+                                     OPAQUE_TEXT);
 }
 void init_adc()
 {
@@ -160,7 +164,7 @@ void init_adc()
 
     /* Initializing ADC (ADCOSC/64/8) */
     MAP_ADC14_enableModule();
-    MAP_ADC14_initModule(((uint32_t)0x00000000), ((uint32_t)0xC0000000) , ((uint32_t)0x01C00000),
+    MAP_ADC14_initModule(((uint32_t)0x00200000), ((uint32_t)0xC0000000) , ((uint32_t)0x01C00000),
             0);
 
     /* Configuring ADC Memory (ADC_MEM0 - ADC_MEM2 (A11, A13, A14)  with no repeat)
@@ -214,6 +218,7 @@ int main(void)
     Board_initGPIO();
     Board_initUART();
     init_clocks();
+    init_lcd();
     init_adc();
 
     /* Construct BIOS objects */
@@ -227,8 +232,8 @@ int main(void)
 
 
     /* Turn on user LED */
-    GPIO_write(Board_LED0, Board_LED_ON);
-    GPIO_write(Board_LED1, Board_LED_ON);
+    //GPIO_write(Board_LED0, Board_LED_ON);
+    //GPIO_write(Board_LED1, Board_LED_ON);
 
     System_flush();
 
@@ -240,14 +245,35 @@ int main(void)
 /* This interrupt is fired whenever a conversion is completed and placed in
  * ADC_MEM2. This signals the end of conversion and the results array is
  * grabbed and placed in resultsBuffer */
-void show_adc14_info() {
+void show_adc14_info()
+{
 
 
+
+	        int8_t adc14_x[] = "__";
+
+
+	        if(resultsBuffer[0] > 11000) {
+	        	adc14_x[1] = '1';
+	        } else if(resultsBuffer[0] < 10000) {
+	        	adc14_x[1] = '0';
+	        } else {
+	        	adc14_x[1] = '5';
+	        	adc14_x[0] = '.';
+	        }
+
+	        Graphics_drawStringCentered(&g_sContext,
+	                                          &adc14_x,
+	                                          AUTO_STRING_LENGTH,
+	                                          64,
+	                                          84,
+	                                          OPAQUE_TEXT);
 }
 void ADC14_IRQHandler(void)
 {
     uint64_t status;
 
+    MAP_Interrupt_disableInterrupt(INT_ADC14);
     status = MAP_ADC14_getEnabledInterruptStatus();
     MAP_ADC14_clearInterruptFlag(status);
 
@@ -258,26 +284,8 @@ void ADC14_IRQHandler(void)
         resultsBuffer[0] = ADC14_getResult(ADC_MEM0);
         resultsBuffer[1] = ADC14_getResult(ADC_MEM1);
         resultsBuffer[2] = ADC14_getResult(ADC_MEM2);
-
-        int8_t adc14_x[] = "  ";
-/*
-        if(resultsBuffer[0] > 12000) {
-        	adc14_x[1] = '1';
-        } else if(resultsBuffer[0] < 10000) {
-        	adc14_x[1] = '0';
-        } else {
-        	adc14_x[1] = '5';
-        	adc14_x[0] = '.';
-        }
-
-        Graphics_drawStringCentered(&g_sContext,
-                                          &adc14_x,
-                                          AUTO_STRING_LENGTH,
-                                          64,
-                                          40,
-                                          OPAQUE_TEXT);
-*/
-
+        //P1OUT ^= BIT0;
+        Swi_post(swi0);
     }
 
 }
