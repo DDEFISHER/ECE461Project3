@@ -485,13 +485,13 @@ const UARTMSP432_BaudrateConfig uartMSP432Baudrates[] = {
     {9600,   3000000,  19,  8,  85, 1},
     {9600,   32768,     3,  0, 146, 0}
 };
-
+// use aclk for uart
 const UARTMSP432_HWAttrs uartMSP432HWAttrs[MSP_EXP432P401R_UARTCOUNT] = {
     {
         .baseAddr = EUSCI_A0_BASE,
         .intNum = INT_EUSCIA0,
         .intPriority = (~0),
-        .clockSource = (0x0080),
+        .clockSource = (0x0040),
         .bitOrder = EUSCI_A_UART_LSB_FIRST,
         .numBaudrateEntries = sizeof(uartMSP432Baudrates) /
             sizeof(UARTMSP432_BaudrateConfig),

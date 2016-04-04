@@ -92,7 +92,7 @@ Void echoFxn(UArg arg0, UArg arg1)
     uartParams.readDataMode = UART_DATA_BINARY;
     uartParams.readReturnMode = UART_RETURN_FULL;
     uartParams.readEcho = UART_ECHO_OFF;
-    uartParams.baudRate = 115200;
+    uartParams.baudRate = 9600;
     uart = UART_open(Board_UART0, &uartParams);
 
     if (uart == NULL) {
@@ -202,11 +202,10 @@ void init_adc()
 void init_clocks()
 {
 	/* Initializes Clock System */
-	MAP_CS_setDCOCenteredFrequency((0x00030000));
-	MAP_CS_initClockSignal((0x00000002), (0x00000003), (0x00000000));
-	MAP_CS_initClockSignal((0x00000004), (0x00000003), (0x00000000));
-	MAP_CS_initClockSignal((0x00000008), (0x00000003), (0x00000000));
-	MAP_CS_initClockSignal((0x00000001), (0x00000002), (0x00000000));
+	MAP_CS_setDCOCenteredFrequency((0x00050000)); //DCO = 48 MHZ
+	MAP_CS_initClockSignal((0x00000002), (0x00000003), (0x00000000)); // MCLK = DCO /1
+	MAP_CS_initClockSignal((0x00000004), (0x00000003), (0x00000000)); // HSMCLK = DCO/1
+	MAP_CS_initClockSignal((0x00000008), (0x00000003), (0x00000000)); // SMCLK = DCO /1
 }
 /*
  *  ======== main ========
