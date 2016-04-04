@@ -240,6 +240,10 @@ int main(void)
 /* This interrupt is fired whenever a conversion is completed and placed in
  * ADC_MEM2. This signals the end of conversion and the results array is
  * grabbed and placed in resultsBuffer */
+void show_adc14_info() {
+
+
+}
 void ADC14_IRQHandler(void)
 {
     uint64_t status;
@@ -254,6 +258,26 @@ void ADC14_IRQHandler(void)
         resultsBuffer[0] = ADC14_getResult(ADC_MEM0);
         resultsBuffer[1] = ADC14_getResult(ADC_MEM1);
         resultsBuffer[2] = ADC14_getResult(ADC_MEM2);
+
+        int8_t adc14_x[] = "  ";
+/*
+        if(resultsBuffer[0] > 12000) {
+        	adc14_x[1] = '1';
+        } else if(resultsBuffer[0] < 10000) {
+        	adc14_x[1] = '0';
+        } else {
+        	adc14_x[1] = '5';
+        	adc14_x[0] = '.';
+        }
+
+        Graphics_drawStringCentered(&g_sContext,
+                                          &adc14_x,
+                                          AUTO_STRING_LENGTH,
+                                          64,
+                                          40,
+                                          OPAQUE_TEXT);
+*/
+
     }
 
 }
