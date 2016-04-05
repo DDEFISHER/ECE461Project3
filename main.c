@@ -65,15 +65,35 @@
 #include "ped_adc.h"
 #include "uart_task.h"
 
-typedef struct MsgObj {
-	uint16_t resultsBuffer[3];
-} MsgObj, *Msg;
+typedef struct LcdObj {
+	int8_t *buffer;
+} LcdObj, *LcdMsg;
 
+Void LcDTask(UArg arg0, UArg arg1)
+{
+
+	LcdObj lcd_message;
+
+	lcd_message.buffer = "012345678901";
+
+	while(1) {
+
+		//Semaphore_pend(lcd_draw_semaphore, BIOS_WAIT_FOREVER);// wait on semaphore from Timer ISR
+		Mailbox_pend(ADC_Mbx, &lcd_message, BIOS_WAIT_FOREVER);// wait/block until post of msg, get msg.val
+
+
+		write_lcd(lcd_message.buffer, 1);
+	}
+
+
+}
 Void adcCalc(UArg arg0, UArg arg1)
 {
     int8_t adc14_x[5] = "hello";
 
+    LcdObj lcd_message;
 
+    lcd_message.buffer = "012345678901";
 
 	write_lcd(adc14_x, 3);
 	while(1) {
@@ -138,4 +158,55 @@ void start_button()
 
 }
 
+Void echoFxn(UArg arg0, UArg arg1)
+{
+    int8_t input_x[] = "      ";
+    int8_t input_y[] = "      ";
 
+    LcdObj lcd_message;
+    lcd_message.buffer = "012345678901";
+
+
+    UART_Handle uart;
+    UART_Params uartParams;
+
+    /* Create a UART with data processing off. */
+    UART_Params_init(&uartParams);
+    uartParams.writeDataMode = UART_DATA_BINARY;
+    uartParams.readDataMode = UART_DATA_BINARY;
+    uartParams.readReturnMode = UART_RETURN_FULL;
+    uartParams.readEcho = UART_ECHO_OFF;
+    uartParams.baudRate = 9600;
+    uart = UART_open(Board_UART0, &uartParams);
+
+    if (uart == NULL) {
+        System_abort("Error opening the UART");
+    }
+
+    //send this char for handshaking with PC
+    int8_t prompt = 65;
+
+	Semaphore_pend(start_data_semaphore, BIOS_WAIT_FOREVER);	// wait on button semaphore
+
+    UART_write(uart, &prompt, 1);
+
+
+
+    while (1) {
+
+      UART_read(uart, &input_x, 4);
+
+
+
+
+    	//output[0] = (int8_t)input[0];
+    	//output[1] = (int8_t)input[1];
+      //write_lcd(input_x, 1);
+
+      lcd_message.buffer = input_x;
+      Mailbox_post(ADC_Mbx, &lcd_message, BIOS_WAIT_FOREVER);
+      //Semaphore_post(lcd_draw_semaphore);
+      MAP_Interrupt_enableInterrupt(INT_ADC14);
+
+    }
+}

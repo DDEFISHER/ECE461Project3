@@ -252,6 +252,8 @@ main.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_0
 main.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Task.h
 main.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Semaphore.h
 main.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Semaphore.h
+main.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Semaphore.h
+main.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Task.h
 main.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/BIOS.h
 main.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/package/BIOS_RtsGateProxy.h
 main.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Swi.h
@@ -520,6 +522,8 @@ main.obj: ../uart_task.h
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Task.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Semaphore.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Semaphore.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Semaphore.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Task.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/BIOS.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/package/BIOS_RtsGateProxy.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Swi.h: 

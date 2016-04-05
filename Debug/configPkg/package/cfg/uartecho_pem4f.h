@@ -25,6 +25,12 @@ extern const ti_sysbios_knl_Semaphore_Handle start_data_semaphore;
 #include <ti/sysbios/knl/Semaphore.h>
 extern const ti_sysbios_knl_Semaphore_Handle adc_calc_semaphore;
 
+#include <ti/sysbios/knl/Semaphore.h>
+extern const ti_sysbios_knl_Semaphore_Handle lcd_draw_semaphore;
+
+#include <ti/sysbios/knl/Task.h>
+extern const ti_sysbios_knl_Task_Handle task2;
+
 extern int xdc_runtime_Startup__EXECFXN__C;
 
 extern int xdc_runtime_Startup__RESETFXN__C;
