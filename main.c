@@ -34,6 +34,7 @@
  *  ======== uartecho.c ========
  */
 #include "driverlib.h"
+#include "msp.h"
 /* GrLib Includes */
 #include "grlib.h"
 #include "Crystalfontz128x128_ST7735.h"
@@ -60,9 +61,13 @@
 
 #include <stdint.h>
 
-#include "msp.h"
+
 
 #include "lcd_display.h"
+#include "ped_adc.h"
+
+/* ADC results buffer */
+static uint16_t resultsBuffer[3];
 
 #define TASKSTACKSIZE     768
 
@@ -80,7 +85,7 @@ Void echoFxn(UArg arg0, UArg arg1)
 {
     int8_t input_x[] = "      ";
     int8_t input_y[] = "      ";
-    int8_t input_z[] = "      ";
+
 
     UART_Handle uart;
     UART_Params uartParams;
@@ -117,57 +122,7 @@ Void echoFxn(UArg arg0, UArg arg1)
 
     }
 }
-void init_adc()
-{
-    /* Configures Pin 4.0, 4.2, and 6.1 as ADC input */
-    MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P4, GPIO_PIN0 | GPIO_PIN2, GPIO_TERTIARY_MODULE_FUNCTION);
-    MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P6, GPIO_PIN1, GPIO_TERTIARY_MODULE_FUNCTION);
 
-    /* Initializing ADC (ADCOSC/64/8) */
-    MAP_ADC14_enableModule();
-    MAP_ADC14_initModule(((uint32_t)0x00200000), ((uint32_t)0xC0000000) , ((uint32_t)0x01C00000),
-            0);
-
-    /* Configuring ADC Memory (ADC_MEM0 - ADC_MEM2 (A11, A13, A14)  with no repeat)
-         * with internal 2.5v reference */
-    MAP_ADC14_configureMultiSequenceMode(ADC_MEM0, ADC_MEM2, true);
-    MAP_ADC14_configureConversionMemory(ADC_MEM0,
-    		((uint32_t)0x00000000),
-			((uint32_t)0x0000000E), ADC_NONDIFFERENTIAL_INPUTS);
-
-    MAP_ADC14_configureConversionMemory(ADC_MEM1,
-    		((uint32_t)0x00000000),
-			((uint32_t)0x0000000D), ADC_NONDIFFERENTIAL_INPUTS);
-
-    MAP_ADC14_configureConversionMemory(ADC_MEM2,
-    		((uint32_t)0x00000000),
-			((uint32_t)0x0000000B), ADC_NONDIFFERENTIAL_INPUTS);
-
-    /* Enabling the interrupt when a conversion on channel 2 (end of sequence)
-     *  is complete and enabling conversions */
-    MAP_ADC14_enableInterrupt(((uint32_t)0x00000004) );
-
-    /* Enabling Interrupts */
-    MAP_Interrupt_enableInterrupt(INT_ADC14);
-    MAP_Interrupt_enableMaster();
-
-    /* Setting up the sample timer to automatically step through the sequence
-     * convert.
-     */
-    MAP_ADC14_enableSampleTimer(((uint32_t)0x00000080));
-
-    /* Triggering the start of the sample */
-    MAP_ADC14_enableConversion();
-    MAP_ADC14_toggleConversionTrigger();
-}
-void init_clocks()
-{
-	/* Initializes Clock System */
-	MAP_CS_setDCOCenteredFrequency((0x00050000)); //DCO = 48 MHZ
-	MAP_CS_initClockSignal((0x00000002), (0x00000003), (0x00000000)); // MCLK = DCO /1
-	MAP_CS_initClockSignal((0x00000004), (0x00000003), (0x00000000)); // HSMCLK = DCO/1
-	MAP_CS_initClockSignal((0x00000008), (0x00000003), (0x00000000)); // SMCLK = DCO /1
-}
 /*
  *  ======== main ========
  */
@@ -202,9 +157,7 @@ int main(void)
 
     return (0);
 }
-/* This interrupt is fired whenever a conversion is completed and placed in
- * ADC_MEM2. This signals the end of conversion and the results array is
- * grabbed and placed in resultsBuffer */
+//Swi to show adc info
 void show_adc14_info()
 {
 
@@ -225,6 +178,7 @@ void show_adc14_info()
 	        write_lcd(adc14_x, 3);
 
 }
+//Hwi to handle adc14 interript
 void ADC14_IRQHandler(void)
 {
     uint64_t status;
@@ -245,3 +199,4 @@ void ADC14_IRQHandler(void)
     }
 
 }
+

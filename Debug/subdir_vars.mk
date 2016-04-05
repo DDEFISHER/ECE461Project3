@@ -19,6 +19,7 @@ C_SRCS += \
 ../lcd_display.c \
 ../line.c \
 ../main.c \
+../ped_adc.c \
 ../string.c 
 
 OBJS += \
@@ -31,6 +32,7 @@ OBJS += \
 ./lcd_display.obj \
 ./line.obj \
 ./main.obj \
+./ped_adc.obj \
 ./string.obj 
 
 C_DEPS += \
@@ -43,6 +45,7 @@ C_DEPS += \
 ./lcd_display.pp \
 ./line.pp \
 ./main.pp \
+./ped_adc.pp \
 ./string.pp 
 
 GEN_MISC_DIRS += \
@@ -75,6 +78,7 @@ C_DEPS__QUOTED += \
 "lcd_display.pp" \
 "line.pp" \
 "main.pp" \
+"ped_adc.pp" \
 "string.pp" 
 
 OBJS__QUOTED += \
@@ -87,6 +91,7 @@ OBJS__QUOTED += \
 "lcd_display.obj" \
 "line.obj" \
 "main.obj" \
+"ped_adc.obj" \
 "string.obj" 
 
 C_SRCS__QUOTED += \
@@ -99,6 +104,7 @@ C_SRCS__QUOTED += \
 "../lcd_display.c" \
 "../line.c" \
 "../main.c" \
+"../ped_adc.c" \
 "../string.c" 
 
 
