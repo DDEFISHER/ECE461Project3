@@ -20,7 +20,8 @@ C_SRCS += \
 ../line.c \
 ../main.c \
 ../ped_adc.c \
-../string.c 
+../string.c \
+../uart_task.c 
 
 OBJS += \
 ./Crystalfontz128x128_ST7735.obj \
@@ -33,7 +34,8 @@ OBJS += \
 ./line.obj \
 ./main.obj \
 ./ped_adc.obj \
-./string.obj 
+./string.obj \
+./uart_task.obj 
 
 C_DEPS += \
 ./Crystalfontz128x128_ST7735.pp \
@@ -46,7 +48,8 @@ C_DEPS += \
 ./line.pp \
 ./main.pp \
 ./ped_adc.pp \
-./string.pp 
+./string.pp \
+./uart_task.pp 
 
 GEN_MISC_DIRS += \
 ./configPkg/ 
@@ -79,7 +82,8 @@ C_DEPS__QUOTED += \
 "line.pp" \
 "main.pp" \
 "ped_adc.pp" \
-"string.pp" 
+"string.pp" \
+"uart_task.pp" 
 
 OBJS__QUOTED += \
 "Crystalfontz128x128_ST7735.obj" \
@@ -92,7 +96,8 @@ OBJS__QUOTED += \
 "line.obj" \
 "main.obj" \
 "ped_adc.obj" \
-"string.obj" 
+"string.obj" \
+"uart_task.obj" 
 
 C_SRCS__QUOTED += \
 "../Crystalfontz128x128_ST7735.c" \
@@ -105,6 +110,7 @@ C_SRCS__QUOTED += \
 "../line.c" \
 "../main.c" \
 "../ped_adc.c" \
-"../string.c" 
+"../string.c" \
+"../uart_task.c" 
 
 

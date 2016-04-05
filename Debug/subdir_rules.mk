@@ -80,6 +80,13 @@ string.obj: ../string.c $(GEN_OPTS) $(GEN_HDRS)
 	@echo 'Finished building: $<'
 	@echo ' '
 
+uart_task.obj: ../uart_task.c $(GEN_OPTS) $(GEN_HDRS)
+	@echo 'Building file: $<'
+	@echo 'Invoking: MSP432 Compiler'
+	"/home/daniel/Programs/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me --include_path="/home/daniel/Programs/ti/ccsv6/ccs_base/arm/include" --include_path="/home/daniel/Programs/ti/ccsv6/ccs_base/arm/include/CMSIS" --include_path="/home/daniel/Programs/ti/workspace2/uartecho_MSP_EXP432P401R_TI_MSP432P401R" --include_path="/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/msp432_driverlib_3_10_00_09/inc/CMSIS" --include_path="/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/msp432_driverlib_3_10_00_09/inc" --include_path="/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/msp432_driverlib_3_10_00_09/driverlib/MSP432P4xx" --include_path="/home/daniel/Programs/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include" --advice:power_severity=suppress --advice:power=all -g --gcc --define=__MSP432P401R__ --define=TARGET_IS_MSP432P4XX --define=ccs --define=MSP432WARE --display_error_number --diag_warning=225 --diag_warning=255 --diag_wrap=off --gen_func_subsections=on --preproc_with_compile --preproc_dependency="uart_task.pp" $(GEN_OPTS__FLAG) "$(shell echo $<)"
+	@echo 'Finished building: $<'
+	@echo ' '
+
 configPkg/linker.cmd: ../uartecho.cfg
 	@echo 'Building file: $<'
 	@echo 'Invoking: XDCtools'

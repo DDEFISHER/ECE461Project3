@@ -19,6 +19,7 @@ ORDERED_OBJS += \
 "./main.obj" \
 "./ped_adc.obj" \
 "./string.obj" \
+"./uart_task.obj" \
 "../MSP_EXP432P401R.cmd" \
 $(GEN_CMDS__FLAG) \
 -l"/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/msp432_driverlib_3_10_00_09/driverlib/MSP432P4xx/ccs/msp432p4xx_driverlib.lib" \
@@ -159,8 +160,8 @@ uartecho_MSP_EXP432P401R_TI_MSP432P401R.hex: $(EXE_OUTPUTS)
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(BIN_OUTPUTS__QUOTED)$(GEN_OPTS__QUOTED)$(GEN_CMDS__QUOTED)
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
-	-$(RM) "Crystalfontz128x128_ST7735.pp" "HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.pp" "MSP_EXP432P401R.pp" "context.pp" "display.pp" "fontfixed6x8.pp" "lcd_display.pp" "line.pp" "main.pp" "ped_adc.pp" "string.pp" 
-	-$(RM) "Crystalfontz128x128_ST7735.obj" "HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj" "MSP_EXP432P401R.obj" "context.obj" "display.obj" "fontfixed6x8.obj" "lcd_display.obj" "line.obj" "main.obj" "ped_adc.obj" "string.obj" 
+	-$(RM) "Crystalfontz128x128_ST7735.pp" "HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.pp" "MSP_EXP432P401R.pp" "context.pp" "display.pp" "fontfixed6x8.pp" "lcd_display.pp" "line.pp" "main.pp" "ped_adc.pp" "string.pp" "uart_task.pp" 
+	-$(RM) "Crystalfontz128x128_ST7735.obj" "HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj" "MSP_EXP432P401R.obj" "context.obj" "display.obj" "fontfixed6x8.obj" "lcd_display.obj" "line.obj" "main.obj" "ped_adc.obj" "string.obj" "uart_task.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

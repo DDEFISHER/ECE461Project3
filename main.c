@@ -65,6 +65,7 @@
 
 #include "lcd_display.h"
 #include "ped_adc.h"
+#include "uart_task.h"
 
 /* ADC results buffer */
 static uint16_t resultsBuffer[3];
@@ -81,7 +82,7 @@ static uint16_t resultsBuffer[3];
  *  ======== echoFxn ========
  *  Task for this function is created statically. See the project's .cfg file.
  */
-Void echoFxn(UArg arg0, UArg arg1)
+/*Void echoFxn(UArg arg0, UArg arg1)
 {
     int8_t input_x[] = "      ";
     int8_t input_y[] = "      ";
@@ -91,7 +92,7 @@ Void echoFxn(UArg arg0, UArg arg1)
     UART_Params uartParams;
     //const char echoPrompt[] = "\fEchoing characters:\r\n";
 
-    /* Create a UART with data processing off. */
+    // Create a UART with data processing off.
     UART_Params_init(&uartParams);
     uartParams.writeDataMode = UART_DATA_BINARY;
     uartParams.readDataMode = UART_DATA_BINARY;
@@ -122,7 +123,7 @@ Void echoFxn(UArg arg0, UArg arg1)
 
     }
 }
-
+*/
 /*
  *  ======== main ========
  */

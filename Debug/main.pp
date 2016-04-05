@@ -254,6 +254,7 @@ main.obj: ../Board.h
 main.obj: ../MSP_EXP432P401R.h
 main.obj: ../lcd_display.h
 main.obj: ../ped_adc.h
+main.obj: ../uart_task.h
 
 ../main.c: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/msp432_driverlib_3_10_00_09/driverlib/MSP432P4xx/driverlib.h: 
@@ -509,3 +510,4 @@ main.obj: ../ped_adc.h
 ../MSP_EXP432P401R.h: 
 ../lcd_display.h: 
 ../ped_adc.h: 
+../uart_task.h: 
