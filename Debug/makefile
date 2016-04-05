@@ -14,6 +14,7 @@ ORDERED_OBJS += \
 "./context.obj" \
 "./display.obj" \
 "./fontfixed6x8.obj" \
+"./lcd_display.obj" \
 "./line.obj" \
 "./main.obj" \
 "./string.obj" \
@@ -157,8 +158,8 @@ uartecho_MSP_EXP432P401R_TI_MSP432P401R.hex: $(EXE_OUTPUTS)
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(BIN_OUTPUTS__QUOTED)$(GEN_OPTS__QUOTED)$(GEN_CMDS__QUOTED)
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
-	-$(RM) "Crystalfontz128x128_ST7735.pp" "HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.pp" "MSP_EXP432P401R.pp" "context.pp" "display.pp" "fontfixed6x8.pp" "line.pp" "main.pp" "string.pp" 
-	-$(RM) "Crystalfontz128x128_ST7735.obj" "HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj" "MSP_EXP432P401R.obj" "context.obj" "display.obj" "fontfixed6x8.obj" "line.obj" "main.obj" "string.obj" 
+	-$(RM) "Crystalfontz128x128_ST7735.pp" "HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.pp" "MSP_EXP432P401R.pp" "context.pp" "display.pp" "fontfixed6x8.pp" "lcd_display.pp" "line.pp" "main.pp" "string.pp" 
+	-$(RM) "Crystalfontz128x128_ST7735.obj" "HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj" "MSP_EXP432P401R.obj" "context.obj" "display.obj" "fontfixed6x8.obj" "lcd_display.obj" "line.obj" "main.obj" "string.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

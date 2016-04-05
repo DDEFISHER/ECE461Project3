@@ -252,6 +252,7 @@ main.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/tidrivers_m
 main.obj: /home/daniel/Programs/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include/stddef.h
 main.obj: ../Board.h
 main.obj: ../MSP_EXP432P401R.h
+main.obj: ../lcd_display.h
 
 ../main.c: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/msp432_driverlib_3_10_00_09/driverlib/MSP432P4xx/driverlib.h: 
@@ -505,3 +506,4 @@ main.obj: ../MSP_EXP432P401R.h
 /home/daniel/Programs/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include/stddef.h: 
 ../Board.h: 
 ../MSP_EXP432P401R.h: 
+../lcd_display.h: 

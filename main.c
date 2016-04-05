@@ -62,12 +62,12 @@
 
 #include "msp.h"
 
+#include "lcd_display.h"
+
 #define TASKSTACKSIZE     768
 
 Task_Struct task0Struct;
 Char task0Stack[TASKSTACKSIZE];
-/* Graphic library context */
-Graphics_Context g_sContext;
 
 /* ADC results buffer */
 static uint16_t resultsBuffer[3];
@@ -111,50 +111,11 @@ Void echoFxn(UArg arg0, UArg arg1)
 
     	//output[0] = (int8_t)input[0];
     	//output[1] = (int8_t)input[1];
+      write_lcd(input_x, 1);
 
-      Graphics_drawStringCentered(&g_sContext,
-                                  &input_x,
-                                  AUTO_STRING_LENGTH,
-                                  64,
-                                  40,
-                                  OPAQUE_TEXT);
-     /* Graphics_drawStringCentered(&g_sContext,
-                                  &input_y,
-                                  AUTO_STRING_LENGTH,
-                                  64,
-                                  50,
-                                  OPAQUE_TEXT);
-      Graphics_drawStringCentered(&g_sContext,
-                                  &input_z,
-                                  AUTO_STRING_LENGTH,
-                                  64,
-                                  60,
-                                  OPAQUE_TEXT);*/
       MAP_Interrupt_enableInterrupt(INT_ADC14);
 
     }
-}
-void init_lcd()
-{
-    /* Initializes display */
-    Crystalfontz128x128_Init();
-
-    /* Set default screen orientation */
-    Crystalfontz128x128_SetOrientation(LCD_ORIENTATION_UP);
-
-    /* Initializes graphics context */
-    Graphics_initContext(&g_sContext, &g_sCrystalfontz128x128);
-    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_RED);
-    Graphics_setBackgroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
-    GrContextFontSet(&g_sContext, &g_sFontFixed6x8);
-    Graphics_clearDisplay(&g_sContext);
-
-    Graphics_drawStringCentered(&g_sContext,
-                                    "Project3",
-                                     AUTO_STRING_LENGTH,
-                                     64,
-                                     64,
-                                     OPAQUE_TEXT);
 }
 void init_adc()
 {
@@ -261,12 +222,8 @@ void show_adc14_info()
 	        	adc14_x[0] = '.';
 	        }
 
-	        Graphics_drawStringCentered(&g_sContext,
-	                                          &adc14_x,
-	                                          AUTO_STRING_LENGTH,
-	                                          64,
-	                                          84,
-	                                          OPAQUE_TEXT);
+	        write_lcd(adc14_x, 3);
+
 }
 void ADC14_IRQHandler(void)
 {

@@ -16,6 +16,7 @@ C_SRCS += \
 ../context.c \
 ../display.c \
 ../fontfixed6x8.c \
+../lcd_display.c \
 ../line.c \
 ../main.c \
 ../string.c 
@@ -27,6 +28,7 @@ OBJS += \
 ./context.obj \
 ./display.obj \
 ./fontfixed6x8.obj \
+./lcd_display.obj \
 ./line.obj \
 ./main.obj \
 ./string.obj 
@@ -38,6 +40,7 @@ C_DEPS += \
 ./context.pp \
 ./display.pp \
 ./fontfixed6x8.pp \
+./lcd_display.pp \
 ./line.pp \
 ./main.pp \
 ./string.pp 
@@ -69,6 +72,7 @@ C_DEPS__QUOTED += \
 "context.pp" \
 "display.pp" \
 "fontfixed6x8.pp" \
+"lcd_display.pp" \
 "line.pp" \
 "main.pp" \
 "string.pp" 
@@ -80,6 +84,7 @@ OBJS__QUOTED += \
 "context.obj" \
 "display.obj" \
 "fontfixed6x8.obj" \
+"lcd_display.obj" \
 "line.obj" \
 "main.obj" \
 "string.obj" 
@@ -91,6 +96,7 @@ C_SRCS__QUOTED += \
 "../context.c" \
 "../display.c" \
 "../fontfixed6x8.c" \
+"../lcd_display.c" \
 "../line.c" \
 "../main.c" \
 "../string.c" 
