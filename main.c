@@ -61,72 +61,29 @@
 
 #include <stdint.h>
 
-
-
 #include "lcd_display.h"
 #include "ped_adc.h"
 #include "uart_task.h"
 
-/* ADC results buffer */
-static uint16_t resultsBuffer[3];
+typedef struct MsgObj {
+	uint16_t resultsBuffer[3];
+} MsgObj, *Msg;
 
-#define TASKSTACKSIZE     768
-
-Task_Struct task0Struct;
-Char task0Stack[TASKSTACKSIZE];
-
-/* ADC results buffer */
-static uint16_t resultsBuffer[3];
-
-/*
- *  ======== echoFxn ========
- *  Task for this function is created statically. See the project's .cfg file.
- */
-/*Void echoFxn(UArg arg0, UArg arg1)
+Void adcCalc(UArg arg0, UArg arg1)
 {
-    int8_t input_x[] = "      ";
-    int8_t input_y[] = "      ";
+    int8_t adc14_x[5] = "hello";
 
 
-    UART_Handle uart;
-    UART_Params uartParams;
-    //const char echoPrompt[] = "\fEchoing characters:\r\n";
 
-    // Create a UART with data processing off.
-    UART_Params_init(&uartParams);
-    uartParams.writeDataMode = UART_DATA_BINARY;
-    uartParams.readDataMode = UART_DATA_BINARY;
-    uartParams.readReturnMode = UART_RETURN_FULL;
-    uartParams.readEcho = UART_ECHO_OFF;
-    uartParams.baudRate = 9600;
-    uart = UART_open(Board_UART0, &uartParams);
+	write_lcd(adc14_x, 3);
+	while(1) {
 
-    if (uart == NULL) {
-        System_abort("Error opening the UART");
-    }
+		Semaphore_pend(adc_calc_semaphore, BIOS_WAIT_FOREVER);
 
-    //UART_write(uart, echoPrompt, sizeof(echoPrompt));
+	}
 
-    while (1) {
 
-      UART_read(uart, &input_x, 4);
-      //UART_read(uart, &input_y, 6);
-      //UART_read(uart, &input_z, 6);
-
-      
-
-    	//output[0] = (int8_t)input[0];
-    	//output[1] = (int8_t)input[1];
-      write_lcd(input_x, 1);
-
-      MAP_Interrupt_enableInterrupt(INT_ADC14);
-
-    }
 }
-*/
-/*
- *  ======== main ========
- */
 int main(void)
 {
     /* Call board init functions */
@@ -136,16 +93,6 @@ int main(void)
     init_clocks();
     init_lcd();
     init_adc();
-
-    /* Construct BIOS objects */
-    Task_Params taskParams;
-
-    Task_Params_init(&taskParams);
-    taskParams.stackSize = TASKSTACKSIZE;
-    taskParams.stack = &task0Stack;
-    taskParams.instance->name = "echo";
-    Task_construct(&task0Struct, (Task_FuncPtr)echoFxn, &taskParams, NULL);
-
 
     /* Turn on user LED */
     //GPIO_write(Board_LED0, Board_LED_ON);
@@ -158,31 +105,13 @@ int main(void)
 
     return (0);
 }
-//Swi to show adc info
-void show_adc14_info()
-{
-
-
-
-	        int8_t adc14_x[] = "__";
-
-
-	        if(resultsBuffer[0] > 11000) {
-	        	adc14_x[1] = '1';
-	        } else if(resultsBuffer[0] < 10000) {
-	        	adc14_x[1] = '0';
-	        } else {
-	        	adc14_x[1] = '5';
-	        	adc14_x[0] = '.';
-	        }
-
-	        write_lcd(adc14_x, 3);
-
-}
 //Hwi to handle adc14 interript
 void ADC14_IRQHandler(void)
 {
     uint64_t status;
+    uint16_t x;
+    uint16_t y;
+    uint16_t z;
 
     MAP_Interrupt_disableInterrupt(INT_ADC14);
     status = MAP_ADC14_getEnabledInterruptStatus();
@@ -192,12 +121,21 @@ void ADC14_IRQHandler(void)
     if(status & ((uint32_t)0x00000004))
     {
         /* Store ADC14 conversion results */
-        resultsBuffer[0] = ADC14_getResult(ADC_MEM0);
-        resultsBuffer[1] = ADC14_getResult(ADC_MEM1);
-        resultsBuffer[2] = ADC14_getResult(ADC_MEM2);
+        x = ADC14_getResult(ADC_MEM0);
+        y = ADC14_getResult(ADC_MEM1);
+        z = ADC14_getResult(ADC_MEM2);
         //P1OUT ^= BIT0;
-        Swi_post(swi0);
     }
 
 }
+// Idle function that starts uart capture and adc capture
+void start_button()
+{
+	if ((P1IN & BIT4) == 0) {
+		P2OUT |= BIT1;
+		Semaphore_post(start_data_semaphore);// unbock uart
+	}
+
+}
+
 

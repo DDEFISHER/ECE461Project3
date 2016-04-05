@@ -122,22 +122,51 @@ uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Error.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h
 uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/family/arm/m3/Hwi__epilogue.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Swi.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Mailbox.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h
 uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/package.defs.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IHeap.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Queue.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Assert.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Event.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Event__prologue.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Assert.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Diags.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Log.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Queue.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Clock.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Assert.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Diags.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Log.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/interfaces/ITimer.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Queue.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Swi.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Error.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Assert.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Diags.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Log.h
 uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Queue.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/Clock_TimerProxy.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/BIOS.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/package/BIOS_RtsGateProxy.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Swi.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/interfaces/ITimer.h
 uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Task.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h
@@ -154,30 +183,12 @@ uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/ru
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Error.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h
 uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Clock.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Assert.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Diags.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Log.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/interfaces/ITimer.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Queue.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Swi.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/Clock_TimerProxy.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/interfaces/ITimer.h
 uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/Task_SupportProxy.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
 uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/interfaces/ITaskSupport.h
 uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Task__epilogue.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/Task_SupportProxy.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Clock.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/Clock_TimerProxy.h
+uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Event__epilogue.h
 uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Semaphore.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h
@@ -189,17 +200,18 @@ uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6
 uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Clock.h
 uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h
 uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Event.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Event__prologue.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Assert.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Diags.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Log.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Queue.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Clock.h
 uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Task.h
-uart_task.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h
-uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Event__epilogue.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/Task_SupportProxy.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Task.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Semaphore.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Semaphore.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/BIOS.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/package/BIOS_RtsGateProxy.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Swi.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Task.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Clock.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/Clock_TimerProxy.h
+uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Semaphore.h
 uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/tidrivers_msp43x_2_16_00_08/packages/ti/drivers/GPIO.h
 uart_task.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/tidrivers_msp43x_2_16_00_08/packages/ti/drivers/UART.h
 uart_task.obj: /home/daniel/Programs/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include/stddef.h
@@ -371,22 +383,51 @@ uart_task.obj: ../MSP_EXP432P401R.h
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Error.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/family/arm/m3/Hwi__epilogue.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Swi.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Mailbox.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/package.defs.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IHeap.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Queue.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Assert.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Event.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Event__prologue.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Assert.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Diags.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Log.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Queue.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Clock.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Assert.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Diags.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Log.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/interfaces/ITimer.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Queue.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Swi.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Error.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Assert.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Diags.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Log.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Queue.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/Clock_TimerProxy.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/BIOS.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/package/BIOS_RtsGateProxy.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Swi.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/interfaces/ITimer.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Task.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h: 
@@ -403,30 +444,12 @@ uart_task.obj: ../MSP_EXP432P401R.h
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Error.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Clock.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Assert.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Diags.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Log.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/interfaces/ITimer.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Queue.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Swi.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/Clock_TimerProxy.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/interfaces/ITimer.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/Task_SupportProxy.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/interfaces/ITaskSupport.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Task__epilogue.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/Task_SupportProxy.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Clock.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/Clock_TimerProxy.h: 
+/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Event__epilogue.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Semaphore.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h: 
@@ -438,17 +461,18 @@ uart_task.obj: ../MSP_EXP432P401R.h
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Clock.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Event.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Types.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IInstance.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Event__prologue.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Assert.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Diags.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/Log.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Queue.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Clock.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Task.h: 
-/home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/runtime/IModule.h: 
-/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Event__epilogue.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/Task_SupportProxy.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Task.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Semaphore.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Semaphore.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/BIOS.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/package/BIOS_RtsGateProxy.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Swi.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Task.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Clock.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/package/Clock_TimerProxy.h: 
+/home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/bios_6_45_01_29/packages/ti/sysbios/knl/Semaphore.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/tidrivers_msp43x_2_16_00_08/packages/ti/drivers/GPIO.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/tidrivers_msp43x_2_16_00_08/packages/ti/drivers/UART.h: 
 /home/daniel/Programs/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include/stddef.h: 

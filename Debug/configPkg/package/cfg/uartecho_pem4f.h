@@ -10,8 +10,20 @@
 #include <ti/sysbios/family/arm/m3/Hwi.h>
 extern const ti_sysbios_family_arm_m3_Hwi_Handle m3Hwi0;
 
-#include <ti/sysbios/knl/Swi.h>
-extern const ti_sysbios_knl_Swi_Handle swi0;
+#include <ti/sysbios/knl/Mailbox.h>
+extern const ti_sysbios_knl_Mailbox_Handle ADC_Mbx;
+
+#include <ti/sysbios/knl/Task.h>
+extern const ti_sysbios_knl_Task_Handle task0;
+
+#include <ti/sysbios/knl/Task.h>
+extern const ti_sysbios_knl_Task_Handle task1;
+
+#include <ti/sysbios/knl/Semaphore.h>
+extern const ti_sysbios_knl_Semaphore_Handle start_data_semaphore;
+
+#include <ti/sysbios/knl/Semaphore.h>
+extern const ti_sysbios_knl_Semaphore_Handle adc_calc_semaphore;
 
 extern int xdc_runtime_Startup__EXECFXN__C;
 

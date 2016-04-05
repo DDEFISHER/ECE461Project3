@@ -13,6 +13,8 @@ Graphics_Context g_sContext;
 
 void init_lcd()
 {
+	P2OUT &= ~BIT1;
+	P2DIR |= BIT1; //for green led
     /* Initializes display */
     Crystalfontz128x128_Init();
 

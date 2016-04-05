@@ -35,7 +35,6 @@ Void echoFxn(UArg arg0, UArg arg1)
 
     UART_Handle uart;
     UART_Params uartParams;
-    //const char echoPrompt[] = "\fEchoing characters:\r\n";
 
     /* Create a UART with data processing off. */
     UART_Params_init(&uartParams);
@@ -50,7 +49,13 @@ Void echoFxn(UArg arg0, UArg arg1)
         System_abort("Error opening the UART");
     }
 
-    //UART_write(uart, echoPrompt, sizeof(echoPrompt));
+    int8_t prompt = 65;
+
+	Semaphore_pend(start_data_semaphore, BIOS_WAIT_FOREVER);	// wait on button semaphore
+
+    UART_write(uart, &prompt, 1);
+
+
 
     while (1) {
 

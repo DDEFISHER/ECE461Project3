@@ -56,15 +56,15 @@ extern "C" {
 #define Board_BUTTON1               MSP_EXP432P401R_S2
 #define Board_LED0                  MSP_EXP432P401R_LED1
 #define Board_LED1                  MSP_EXP432P401R_LED_RED
-#define Board_LED2                  MSP_EXP432P401R_LED_RED
+//#define Board_LED2                  MSP_EXP432P401R_LED_RED
 
 /*
  * MSP_EXP432P401R_LED_GREEN & MSP_EXP432P401R_LED_BLUE are used for
  * PWM examples.  Uncomment the following lines if you would like to control
  * the LEDs with the GPIO driver.
  */
-//#define Board_LED2                  MSP_EXP432P401R_LED_GREEN
-//#define Board_LED3                  MSP_EXP432P401R_LED_BLUE
+#define Board_LED2                  MSP_EXP432P401R_LED_GREEN
+#define Board_LED3                  MSP_EXP432P401R_LED_BLUE
 
 #define Board_I2C0                  MSP_EXP432P401R_I2CB0
 #define Board_I2C_TMP               MSP_EXP432P401R_I2CB0
