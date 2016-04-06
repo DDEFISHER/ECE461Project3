@@ -29,33 +29,42 @@ void init_lcd()
     Graphics_clearDisplay(&g_sContext);
 
     Graphics_drawStringCentered(&g_sContext,
-                                    "Project3",
+                                    "Project31234",
                                      AUTO_STRING_LENGTH,
                                      64,
                                      64,
                                      OPAQUE_TEXT);
 }
-void write_lcd(int8_t input_x[], int position)
+void write_lcd(int8_t input[], int position)
 {
-	if(position == 1) {
+
+
+	if(position > 1) {
+    Graphics_drawStringCentered(&g_sContext,
+                                    "                ",
+                                     AUTO_STRING_LENGTH,
+                                     64,
+                                     40,
+                                     OPAQUE_TEXT);
 	Graphics_drawStringCentered(&g_sContext,
-	                            input_x,
+	                            input,
 	                            AUTO_STRING_LENGTH,
 	                            64,
 	                            40,
 	                            OPAQUE_TEXT);
-	} else if(position == 3) {
+	} else {
+
 	Graphics_drawStringCentered(&g_sContext,
-			                    input_x,
-			                    AUTO_STRING_LENGTH,
-			                    64,
-			                    80,
-			                    OPAQUE_TEXT);
+                              input,
+                              AUTO_STRING_LENGTH,
+                              64,
+                              80,
+                              OPAQUE_TEXT);
 	}
 
 }
 /* reverse:  reverse string s in place */
-void reverse(char s[], int length) {
+void reverse(int8_t s[], int length) {
     int i, j;
     char c;
 
@@ -65,7 +74,7 @@ void reverse(char s[], int length) {
         s[j] = c;
     }
 }
-void itoa(int n, char s[]) {
+void itoa(int n, int8_t s[]) {
     int i, sign;
 
     if ((sign = n) < 0)  /* record sign */
@@ -79,13 +88,13 @@ void itoa(int n, char s[]) {
     s[i] = '\0';
     reverse(s, i);
 }
-void combine_ints_to_string(int x, int y, int z, int n, char s[]) {
+void combine_ints_to_string(int x, int y, int z, int n, int8_t s[]) {
 
- char x_buff[4] = "    ";
+ int8_t x_buff[4] = "    ";
  itoa(x,x_buff);
- char y_buff[4] = "    ";
+ int8_t y_buff[4] = "    ";
  itoa(y,y_buff);
- char z_buff[4] = "    ";
+ int8_t z_buff[4] = "    ";
  itoa(z,z_buff);
 
 
