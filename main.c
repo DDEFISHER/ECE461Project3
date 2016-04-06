@@ -66,7 +66,7 @@
 #include "uart_task.h"
 
 typedef struct LcdObj {
-	int8_t buffer[12];
+	int8_t buffer[15];
 	int position;
 } LcdObj;
 
@@ -82,7 +82,7 @@ Void LcDTask(UArg arg0, UArg arg1)
 	LcdObj lcd_message;
 
 	int index = 0;
-	 for(index = 0; index < 12; index++) {
+	 for(index = 0; index < 15; index++) {
 	    	lcd_message.buffer[index] = ' ';
 	 }
 	 lcd_message.position = 1;
@@ -91,11 +91,11 @@ Void LcDTask(UArg arg0, UArg arg1)
 
 		Mailbox_pend(LCD_Mbx, &lcd_message, BIOS_WAIT_FOREVER);// wait/block until post of msg, get msg.val
 
-		int8_t buff[12] = "            ";
+		int8_t buff[15] = "            ";
 
 		int loop_index = 0;
 
-		for(loop_index = 0; loop_index < 12; loop_index++) {
+		for(loop_index = 0; loop_index < 15; loop_index++) {
 
 			buff[loop_index] = lcd_message.buffer[loop_index];
 		}
@@ -114,7 +114,7 @@ Void adcCalc(UArg arg0, UArg arg1)
 
 	LcdObj lcd_message;
 	int index = 0;
-	for(index = 0; index < 12; index++) {
+	for(index = 0; index < 15; index++) {
 		lcd_message.buffer[index] = ' ';
 	}
     lcd_message.position = 3;
@@ -172,7 +172,7 @@ Void adcCalc(UArg arg0, UArg arg1)
 
 		counter++;
 
-    if(counter > 5) {
+    if(counter > 7) {
 
         int sum_x = 0;
         int sum_y = 0;
@@ -184,16 +184,6 @@ Void adcCalc(UArg arg0, UArg arg1)
 
         }
         average_x = sum_x/(counter+1);
-
-        if(average_x > 999) {
-          average_x = 999;
-        }
-        if(average_y > 999) {
-          average_y = 999;
-        }
-        if(average_z > 999) {
-          average_z = 999;
-        }
 
         for(loop_index = 0; loop_index < counter; loop_index++) {
 
@@ -212,7 +202,7 @@ Void adcCalc(UArg arg0, UArg arg1)
         average_z = sum_z/(counter+1);
 
         int index = 0;
-        for(index = 0; index < 12; index++) {
+        for(index = 0; index < 15; index++) {
             lcd_message.buffer[index] = ' ';
           }
 
@@ -225,7 +215,7 @@ Void adcCalc(UArg arg0, UArg arg1)
 }
 
 int main(void)
-{
+ {
     /* Call board init functions */
     Board_initGeneral();
     Board_initGPIO();
@@ -288,7 +278,7 @@ Void echoFxn(UArg arg0, UArg arg1)
 
     LcdObj lcd_message;
     int index = 0;
-    for(index = 0; index < 12; index++) {
+    for(index = 0; index < 15; index++) {
     	lcd_message.buffer[index] = ' ';
     }
     lcd_message.position = 1;

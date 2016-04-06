@@ -29,10 +29,22 @@ void init_lcd()
     Graphics_clearDisplay(&g_sContext);
 
     Graphics_drawStringCentered(&g_sContext,
-                                    "Project31234",
+                                    "Project 3",
                                      AUTO_STRING_LENGTH,
                                      64,
+                                     10,
+                                     OPAQUE_TEXT);
+    Graphics_drawStringCentered(&g_sContext,
+                                    "accelerometer",
+                                     AUTO_STRING_LENGTH,
                                      64,
+                                     20,
+                                     OPAQUE_TEXT);
+    Graphics_drawStringCentered(&g_sContext,
+                                    "   x   y   z   ",
+                                     AUTO_STRING_LENGTH,
+                                     64,
+                                     30,
                                      OPAQUE_TEXT);
 }
 void write_lcd(int8_t input[], int position)
@@ -90,17 +102,17 @@ void itoa(int n, int8_t s[]) {
 }
 void combine_ints_to_string(int x, int y, int z, int n, int8_t s[]) {
 
- int8_t x_buff[4] = "    ";
+ int8_t x_buff[5] = "    ";
  itoa(x,x_buff);
- int8_t y_buff[4] = "    ";
+ int8_t y_buff[5] = "    ";
  itoa(y,y_buff);
- int8_t z_buff[4] = "    ";
+ int8_t z_buff[5] = "    ";
  itoa(z,z_buff);
 
 
  int index = 0;
 
- for(index = 0; index < 4; index++) {
+ for(index = 0; index < 5; index++) {
 
    if(x_buff[index] != '\0') {
      s[index] = x_buff[index];
@@ -108,17 +120,17 @@ void combine_ints_to_string(int x, int y, int z, int n, int8_t s[]) {
      s[index] = ' ';
    }
  }
- for(index = 0; index < 4; index++) {
+ for(index = 0; index < 5; index++) {
 
    if(y_buff[index] != '\0') {
-     s[index+4] = y_buff[index];
+     s[index+5] = y_buff[index];
    } else {
-     s[index+4] = ' ';
+     s[index+5] = ' ';
    }
  }
- for(index = 0; index < 4; index++) {
+ for(index = 0; index < 5; index++) {
 
-   s[index+8] = z_buff[index];
+   s[index+10] = z_buff[index];
  }
 }
 

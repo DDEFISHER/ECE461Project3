@@ -1653,13 +1653,13 @@ __T1_ti_sysbios_knl_Mailbox_Instance_State__allocBuf ti_sysbios_knl_Mailbox_Inst
 #endif
 
 /* --> ti_sysbios_knl_Mailbox_Instance_State_1_allocBuf__A */
-__T1_ti_sysbios_knl_Mailbox_Instance_State__allocBuf ti_sysbios_knl_Mailbox_Instance_State_1_allocBuf__A[144];
+__T1_ti_sysbios_knl_Mailbox_Instance_State__allocBuf ti_sysbios_knl_Mailbox_Instance_State_1_allocBuf__A[192];
 #ifdef __ti__align
     #pragma DATA_ALIGN(ti_sysbios_knl_Mailbox_Instance_State_1_allocBuf__A, 8);
 #endif
 #ifdef __GNUC__
 #ifndef __TI_COMPILER_VERSION__
-__T1_ti_sysbios_knl_Mailbox_Instance_State__allocBuf ti_sysbios_knl_Mailbox_Instance_State_1_allocBuf__A[144] __attribute__ ((aligned(8)));
+__T1_ti_sysbios_knl_Mailbox_Instance_State__allocBuf ti_sysbios_knl_Mailbox_Instance_State_1_allocBuf__A[192] __attribute__ ((aligned(8)));
 #endif
 #endif
 
@@ -6004,7 +6004,7 @@ __FAR__ const ti_sysbios_knl_Mailbox_Params ti_sysbios_knl_Mailbox_Object__PARAM
 __T1_ti_sysbios_knl_Mailbox_Instance_State__allocBuf ti_sysbios_knl_Mailbox_Instance_State_0_allocBuf__A[24];
 
 /* --> ti_sysbios_knl_Mailbox_Instance_State_1_allocBuf__A */
-__T1_ti_sysbios_knl_Mailbox_Instance_State__allocBuf ti_sysbios_knl_Mailbox_Instance_State_1_allocBuf__A[144];
+__T1_ti_sysbios_knl_Mailbox_Instance_State__allocBuf ti_sysbios_knl_Mailbox_Instance_State_1_allocBuf__A[192];
 
 /* Module__root__V */
 ti_sysbios_knl_Mailbox_Module__ ti_sysbios_knl_Mailbox_Module__root__V = {
@@ -6060,7 +6060,7 @@ ti_sysbios_knl_Mailbox_Object__ ti_sysbios_knl_Mailbox_Object__table__V[2] = {
     },
     {/* instance#1 */
         0,  /* heap */
-        (xdc_SizeT)0x10,  /* msgSize */
+        (xdc_SizeT)0x13,  /* msgSize */
         (xdc_UInt)0x6,  /* numMsgs */
         ((xdc_Ptr)0),  /* buf */
         (xdc_UInt)0x6,  /* numFreeMsgs */
