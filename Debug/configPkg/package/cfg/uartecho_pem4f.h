@@ -31,6 +31,9 @@ extern const ti_sysbios_knl_Semaphore_Handle lcd_draw_semaphore;
 #include <ti/sysbios/knl/Task.h>
 extern const ti_sysbios_knl_Task_Handle task2;
 
+#include <ti/sysbios/knl/Mailbox.h>
+extern const ti_sysbios_knl_Mailbox_Handle LCD_Mbx;
+
 extern int xdc_runtime_Startup__EXECFXN__C;
 
 extern int xdc_runtime_Startup__RESETFXN__C;

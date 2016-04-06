@@ -66,44 +66,79 @@
 #include "uart_task.h"
 
 typedef struct LcdObj {
-	int8_t *buffer;
-} LcdObj, *LcdMsg;
+	int8_t buffer[12];
+	int position;
+} LcdObj;
+
+typedef struct AdcObj {
+    int x;
+	int y;
+	int z;
+} AdcObj;
 
 Void LcDTask(UArg arg0, UArg arg1)
 {
 
 	LcdObj lcd_message;
 
-	lcd_message.buffer = "012345678901";
+	int index = 0;
+	for(index = 0; index < 12; index++) {
+		lcd_message.buffer[index] = ' ';
+	}
+
+	lcd_message.position = 1;
 
 	while(1) {
 
-		//Semaphore_pend(lcd_draw_semaphore, BIOS_WAIT_FOREVER);// wait on semaphore from Timer ISR
-		Mailbox_pend(ADC_Mbx, &lcd_message, BIOS_WAIT_FOREVER);// wait/block until post of msg, get msg.val
+		Mailbox_pend(LCD_Mbx, &lcd_message, BIOS_WAIT_FOREVER);// wait/block until post of msg, get msg.val
 
 
-		write_lcd(lcd_message.buffer, 1);
+		write_lcd(lcd_message.buffer, lcd_message.position);
 	}
-
-
 }
+
 Void adcCalc(UArg arg0, UArg arg1)
 {
-    int8_t adc14_x[5] = "hello";
+	AdcObj adc_message;
+	adc_message.x = 0;
+	adc_message.y = 0;
+	adc_message.z = 0;
 
-    LcdObj lcd_message;
+	LcdObj lcd_message;
+	int index = 0;
+    for(index = 0; index < 12; index++) {
+    		lcd_message.buffer[index] = ' ';
+    }
+    lcd_message.position = 3;
 
-    lcd_message.buffer = "012345678901";
 
-	write_lcd(adc14_x, 3);
+
+    int old_x = 1000;
+    int old_y = 1000;
+    int old_z = 1000;
+
+    int new_x = 0;
+    int new_y = 0;
+    int new_z = 0;
+
 	while(1) {
 
-		Semaphore_pend(adc_calc_semaphore, BIOS_WAIT_FOREVER);
+		Mailbox_pend(ADC_Mbx, &adc_message, BIOS_WAIT_FOREVER);
 
+		new_x = adc_message.x;
+		new_y = adc_message.y;
+		new_z = adc_message.z;
+
+		combine_ints_to_string(new_x - old_x, new_y - old_y, new_z-old_z, 12,lcd_message.buffer);
+		lcd_message.position = 3;
+
+		old_x = adc_message.x;
+		old_y = adc_message.y;
+		old_z = adc_message.z;
+		Mailbox_post(LCD_Mbx, &lcd_message, BIOS_WAIT_FOREVER);
 	}
-
-
 }
+
 int main(void)
 {
     /* Call board init functions */
@@ -129,9 +164,11 @@ int main(void)
 void ADC14_IRQHandler(void)
 {
     uint64_t status;
-    uint16_t x;
-    uint16_t y;
-    uint16_t z;
+
+    AdcObj adc_message;
+    adc_message.x = 0;
+    adc_message.y = 0;
+    adc_message.z = 0;
 
     MAP_Interrupt_disableInterrupt(INT_ADC14);
     status = MAP_ADC14_getEnabledInterruptStatus();
@@ -141,10 +178,11 @@ void ADC14_IRQHandler(void)
     if(status & ((uint32_t)0x00000004))
     {
         /* Store ADC14 conversion results */
-        x = ADC14_getResult(ADC_MEM0);
-        y = ADC14_getResult(ADC_MEM1);
-        z = ADC14_getResult(ADC_MEM2);
-        //P1OUT ^= BIT0;
+        adc_message.x = ADC14_getResult(ADC_MEM0);
+        adc_message.y = ADC14_getResult(ADC_MEM1);
+        adc_message.z = ADC14_getResult(ADC_MEM2);
+
+        Mailbox_post(ADC_Mbx, &adc_message, BIOS_WAIT_FOREVER);
     }
 
 }
@@ -164,7 +202,12 @@ Void echoFxn(UArg arg0, UArg arg1)
     int8_t input_y[] = "      ";
 
     LcdObj lcd_message;
-    lcd_message.buffer = "012345678901";
+    int index = 0;
+    for(index = 0; index < 12; index++) {
+    	lcd_message.buffer[index] = ' ';
+    }
+
+    lcd_message.position = 1;
 
 
     UART_Handle uart;
@@ -183,10 +226,10 @@ Void echoFxn(UArg arg0, UArg arg1)
         System_abort("Error opening the UART");
     }
 
+    Semaphore_pend(start_data_semaphore, BIOS_WAIT_FOREVER);	// wait on button semaphore
+
     //send this char for handshaking with PC
     int8_t prompt = 65;
-
-	Semaphore_pend(start_data_semaphore, BIOS_WAIT_FOREVER);	// wait on button semaphore
 
     UART_write(uart, &prompt, 1);
 
@@ -196,17 +239,14 @@ Void echoFxn(UArg arg0, UArg arg1)
 
       UART_read(uart, &input_x, 4);
 
+      //give lcd mail box buffer the input
+      lcd_message.buffer[0] = input_x[0];
+      lcd_message.buffer[1] = input_x[1];
+      lcd_message.buffer[2] = input_x[2];
+      lcd_message.buffer[3] = input_x[3];
+      lcd_message.position = 1;
 
-
-
-    	//output[0] = (int8_t)input[0];
-    	//output[1] = (int8_t)input[1];
-      //write_lcd(input_x, 1);
-
-      lcd_message.buffer = input_x;
-      Mailbox_post(ADC_Mbx, &lcd_message, BIOS_WAIT_FOREVER);
-      //Semaphore_post(lcd_draw_semaphore);
+      Mailbox_post(LCD_Mbx, &lcd_message, BIOS_WAIT_FOREVER);
       MAP_Interrupt_enableInterrupt(INT_ADC14);
-
     }
 }
