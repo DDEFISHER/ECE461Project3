@@ -4,18 +4,13 @@
  *  Created on: Apr 4, 2016
  *      Author: daniel
  */
-/* BIOS module Headers */
-#include <ti/sysbios/BIOS.h>
-#include <ti/sysbios/knl/Swi.h>
-#include <ti/sysbios/knl/Task.h>
-#include <ti/sysbios/knl/Clock.h>
-#include <ti/sysbios/knl/Semaphore.h>
 
 /* TI-RTOS Header files */
 #include <ti/drivers/GPIO.h>
 #include "driverlib.h"
 #include "msp.h"
 
+//init adc
 void init_adc()
 {
     /* Configures Pin 4.0, 4.2, and 6.1 as ADC input */
@@ -59,6 +54,7 @@ void init_adc()
     MAP_ADC14_enableConversion();
     MAP_ADC14_toggleConversionTrigger();
 }
+//init clocks
 void init_clocks()
 {
 	/* Initializes Clock System */

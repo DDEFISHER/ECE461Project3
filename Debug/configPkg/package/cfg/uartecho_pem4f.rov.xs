@@ -18308,7 +18308,7 @@ __o = __obj[939]  // ti.sysbios.knl.Task.Instance#1
     __o['stack'] = null
     __o['stackHeap'] = null
     __o['stackSection'] = String(java.net.URLDecoder.decode('.bss%3AtaskStackSection', 'UTF-8'))
-    __o['stackSize'] = 1024
+    __o['stackSize'] = 5000
     __o['vitalTaskFlag'] = true
 
 __o = __obj[940]  // ti.sysbios.knl.Task.Instance#1/instance

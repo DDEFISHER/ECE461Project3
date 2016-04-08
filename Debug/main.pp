@@ -45,10 +45,6 @@ main.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/msp432_driv
 main.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/msp432_driverlib_3_10_00_09/driverlib/MSP432P4xx/timer_a.h
 main.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/msp432_driverlib_3_10_00_09/driverlib/MSP432P4xx/uart.h
 main.obj: /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/msp432_driverlib_3_10_00_09/driverlib/MSP432P4xx/wdt_a.h
-main.obj: ../grlib.h
-main.obj: /home/daniel/Programs/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include/assert.h
-main.obj: ../Crystalfontz128x128_ST7735.h
-main.obj: ../grlib.h
 main.obj: /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/std.h
 main.obj: /home/daniel/Programs/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include/stdarg.h
 main.obj: /home/daniel/Programs/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include/stddef.h
@@ -269,7 +265,6 @@ main.obj: ../Board.h
 main.obj: ../MSP_EXP432P401R.h
 main.obj: ../lcd_display.h
 main.obj: ../ped_adc.h
-main.obj: ../uart_task.h
 
 ../main.c: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/msp432_driverlib_3_10_00_09/driverlib/MSP432P4xx/driverlib.h: 
@@ -316,10 +311,6 @@ main.obj: ../uart_task.h
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/msp432_driverlib_3_10_00_09/driverlib/MSP432P4xx/timer_a.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/msp432_driverlib_3_10_00_09/driverlib/MSP432P4xx/uart.h: 
 /home/daniel/Programs/ti/tirtos_msp43x_2_16_00_08/products/msp432_driverlib_3_10_00_09/driverlib/MSP432P4xx/wdt_a.h: 
-../grlib.h: 
-/home/daniel/Programs/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include/assert.h: 
-../Crystalfontz128x128_ST7735.h: 
-../grlib.h: 
 /home/daniel/Programs/ti/xdctools_3_31_01_33_core/packages/xdc/std.h: 
 /home/daniel/Programs/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include/stdarg.h: 
 /home/daniel/Programs/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include/stddef.h: 
@@ -540,4 +531,3 @@ main.obj: ../uart_task.h
 ../MSP_EXP432P401R.h: 
 ../lcd_display.h: 
 ../ped_adc.h: 
-../uart_task.h: 

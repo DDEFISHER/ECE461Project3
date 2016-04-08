@@ -11,6 +11,7 @@
 /* Graphic library context */
 Graphics_Context g_sContext;
 
+//init lcd and leds
 void init_lcd()
 {
 	P2OUT &= ~BIT1;
@@ -61,6 +62,7 @@ void init_lcd()
                                      74,
                                      OPAQUE_TEXT);
 }
+//write what ever buffer is passed to this function to lcd
 void write_lcd(int8_t input[], int position)
 {
 	if(position > 1) {
@@ -105,6 +107,7 @@ void reverse(int8_t s[], int length) {
         s[j] = c;
     }
 }
+//converts int to string and places in buffer
 void itoa(int n, int8_t s[]) {
     int i, sign;
 
@@ -152,6 +155,7 @@ void combine_ints_to_string(int x, int y, int z, int n, int8_t s[]) {
    s[index+10] = z_buff[index];
  }
 }
+//converts string to int
 int string_to_int(int8_t s[]) {
 
   int final = 0;

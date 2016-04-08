@@ -31,14 +31,10 @@
  */
 
 /*
- *  ======== uartecho.c ========
+ *  ======== main.c ========
  */
 #include "driverlib.h"
 #include "msp.h"
-/* GrLib Includes */
-#include "grlib.h"
-#include "Crystalfontz128x128_ST7735.h"
-
 
 /* XDC module Headers */
 #include <xdc/std.h>
@@ -63,7 +59,6 @@
 
 #include "lcd_display.h"
 #include "ped_adc.h"
-#include "uart_task.h"
 
 typedef struct LcdObj {
 	int8_t buffer[15];
@@ -126,9 +121,9 @@ Void adcCalc(UArg arg0, UArg arg1)
 
     for(index = 0; index < 50; index++) {
 
-        old_diffs_x[index] = 0;
-        old_diffs_y[index] = 0;
-        old_diffs_z[index] = 0;
+        old_diffs_x[index] = 1000;
+        old_diffs_y[index] = 1000;
+        old_diffs_z[index] = 1000;
     }
     int old_x = 0;
     int old_y = 0;
@@ -176,6 +171,7 @@ Void adcCalc(UArg arg0, UArg arg1)
       old_y = new_y;
       old_z = new_z;
 
+
       counter++;
 
       if(counter > 49) {
@@ -217,6 +213,8 @@ Void adcCalc(UArg arg0, UArg arg1)
           lcd_message.position = 3;
           Mailbox_post(LCD_Mbx, &lcd_message, BIOS_WAIT_FOREVER);
       }
+
+
     }
 }
 
@@ -261,6 +259,7 @@ void ADC14_IRQHandler(void)
         /* Store ADC14 conversion results */
         adc_message.x = ADC14_getResult(ADC_MEM0);
         adc_message.y = ADC14_getResult(ADC_MEM1);
+        adc_message.z = ADC14_getResult(ADC_MEM2);
         adc_message.z = ADC14_getResult(ADC_MEM2);
 
         Mailbox_post(ADC_Mbx, &adc_message, BIOS_WAIT_FOREVER);
@@ -339,13 +338,45 @@ Void uartFxn(UArg arg0, UArg arg1)
         rx = 0 - rx; 
       }
 
+      total_x = total_x + rx;
+
+      UART_read(uart, &input, 2);
+
+      if(input[0] == '$' && input[1] == '$') {
+        P2OUT &= ~BIT1;
+        P1OUT |= BIT0;
+        BIOS_exit(1);
+      }
+      rx = (int)input[1];
+
+      if(input[0] == '-') {
+        rx = 0 - rx; 
+      }
+
+      total_y = total_y + rx;
+
+      UART_read(uart, &input, 2);
+
+      if(input[0] == '$' && input[1] == '$') {
+        P2OUT &= ~BIT1;
+        P1OUT |= BIT0;
+        BIOS_exit(1);
+      }
+      rx = (int)input[1];
+
+      if(input[0] == '-') {
+        rx = 0 - rx; 
+      }
+
+      total_z = total_z + rx;
+      /*
       if((counter % 3) == 0) {
       total_x = total_x + rx;
       } else if ((counter % 3) == 1) {
       total_y = total_y + rx;
       } else {
       total_z = total_z + rx;
-      }
+      }*/
 
       counter++;
 
