@@ -107,26 +107,32 @@ Void LcDTask(UArg arg0, UArg arg1)
 
 Void adcCalc(UArg arg0, UArg arg1)
 {
-	AdcObj adc_message;
-	adc_message.x = 0;
-	adc_message.y = 0;
-	adc_message.z = 0;
+    AdcObj adc_message;
+    adc_message.x = 0;
+    adc_message.y = 0;
+    adc_message.z = 0;
 
-	LcdObj lcd_message;
-	int index = 0;
-	for(index = 0; index < 15; index++) {
-		lcd_message.buffer[index] = ' ';
-	}
+    LcdObj lcd_message;
+    int index = 0;
+    for(index = 0; index < 15; index++) {
+        lcd_message.buffer[index] = ' ';
+    }
     lcd_message.position = 3;
 
 
-    int old_diffs_x[10] = {0,0,0,0,0,0,0,0,0,0};
-    int old_diffs_y[10] = {0,0,0,0,0,0,0,0,0,0};
-    int old_diffs_z[10] = {0,0,0,0,0,0,0,0,0,0};
+    int old_diffs_x[50];
+    int old_diffs_y[50];
+    int old_diffs_z[50];
 
-    int old_x = 1000;
-    int old_y = 1000;
-    int old_z = 1000;
+    for(index = 0; index < 50; index++) {
+
+        old_diffs_x[index] = 0;
+        old_diffs_y[index] = 0;
+        old_diffs_z[index] = 0;
+    }
+    int old_x = 0;
+    int old_y = 0;
+    int old_z = 0;
 
     int new_x = 0;
     int new_y = 0;
@@ -138,80 +144,80 @@ Void adcCalc(UArg arg0, UArg arg1)
     int counter = 0;
     int loop_index = 0;
 
-	while(1) {
+    while(1) {
 
-		Mailbox_pend(ADC_Mbx, &adc_message, BIOS_WAIT_FOREVER);
+      Mailbox_pend(ADC_Mbx, &adc_message, BIOS_WAIT_FOREVER);
 
 
-		new_x = adc_message.x;
-		new_y = adc_message.y;
-		new_z = adc_message.z;
+      new_x = adc_message.x;
+      new_y = adc_message.y;
+      new_z = adc_message.z;
 
-		if((old_x - new_x) > 0 ) {
+      if((old_x - new_x) > 0 ) {
 
-			old_diffs_x[counter] = old_x - new_x;
-		} else {
-			old_diffs_x[counter] = new_x - old_x;
-		}
-		if((old_y - new_y) > 0 ) {
+        old_diffs_x[counter] = old_x - new_x;
+      } else {
+        old_diffs_x[counter] = new_x - old_x;
+      }
+      if((old_y - new_y) > 0 ) {
 
-			old_diffs_y[counter] = old_y - new_y;
-		} else {
-			old_diffs_x[counter] = new_y - old_y;
-		}
-		if((old_z - new_z) > 0 ) {
+        old_diffs_y[counter] = old_y - new_y;
+      } else {
+        old_diffs_x[counter] = new_y - old_y;
+      }
+      if((old_z - new_z) > 0 ) {
 
-			old_diffs_z[counter] = old_z - new_z;
-		} else {
-			old_diffs_z[counter] = new_z - old_z;
-		}
+        old_diffs_z[counter] = old_z - new_z;
+      } else {
+        old_diffs_z[counter] = new_z - old_z;
+      }
 
-		old_x = new_x;
-		old_y = new_y;
-		old_z = new_z;
+      old_x = new_x;
+      old_y = new_y;
+      old_z = new_z;
 
-		counter++;
+      counter++;
 
-    if(counter > 7) {
+      if(counter > 49) {
 
-        int sum_x = 0;
-        int sum_y = 0;
-        int sum_z = 0;
+          int sum_x = 0;
+          int sum_y = 0;
+          int sum_z = 0;
 
-        for(loop_index = 0; loop_index < counter; loop_index++) {
+          for(loop_index = 0; loop_index < counter; loop_index++) {
 
-          sum_x = sum_x + old_diffs_x[loop_index];
+            sum_x = sum_x + old_diffs_x[loop_index];
 
-        }
-        average_x = sum_x/(counter+1);
+          }
+          average_x = sum_x/(counter+1);
 
-        for(loop_index = 0; loop_index < counter; loop_index++) {
+          for(loop_index = 0; loop_index < counter; loop_index++) {
 
-          sum_y = sum_y + old_diffs_y[loop_index];
+            sum_y = sum_y + old_diffs_y[loop_index];
 
-        }
-
-        average_y = sum_y/(counter+1);
-
-        for(loop_index = 0; loop_index < counter; loop_index++) {
-
-          sum_z = sum_z + old_diffs_z[loop_index];
-
-        }
-
-        average_z = sum_z/(counter+1);
-
-        int index = 0;
-        for(index = 0; index < 15; index++) {
-            lcd_message.buffer[index] = ' ';
           }
 
-        combine_ints_to_string(average_x, average_y, average_z, 12,lcd_message.buffer);
-        counter = 0;
-        lcd_message.position = 3;
-        Mailbox_post(LCD_Mbx, &lcd_message, BIOS_WAIT_FOREVER);
+          average_y = sum_y/(counter+1);
+
+          for(loop_index = 0; loop_index < counter; loop_index++) {
+
+            sum_z = sum_z + old_diffs_z[loop_index];
+
+          }
+
+          average_z = sum_z/(counter+1);
+
+          int index = 0;
+          for(index = 0; index < 15; index++) {
+              lcd_message.buffer[index] = ' ';
+            }
+
+          combine_ints_to_string(average_x, average_y, average_z, 12,lcd_message.buffer);
+          counter = 0;
+          lcd_message.position = 3;
+          Mailbox_post(LCD_Mbx, &lcd_message, BIOS_WAIT_FOREVER);
+      }
     }
-	}
 }
 
 int main(void)
@@ -265,16 +271,16 @@ void ADC14_IRQHandler(void)
 void start_button()
 {
 	if ((P1IN & BIT4) == 0) {
+    P1OUT &= ~BIT0;
 		P2OUT |= BIT1;
 		Semaphore_post(start_data_semaphore);// unbock uart
 	}
 
 }
 
-Void echoFxn(UArg arg0, UArg arg1)
+Void uartFxn(UArg arg0, UArg arg1)
 {
-    int8_t input_x[] = "      ";
-    int8_t input_y[] = "      ";
+    int8_t input[] = "               ";
 
     LcdObj lcd_message;
     int index = 0;
@@ -306,21 +312,58 @@ Void echoFxn(UArg arg0, UArg arg1)
 
     UART_write(uart, &prompt, 1);
 
+    int total_x = 0;
+    int total_y = 0;
+    int total_z = 0;
 
+    int average_x = 0;
+    int average_y = 0;
+    int average_z = 0;
+
+    int counter = 0;
+
+    int rx = 0;
 
     while (1) {
 
-      UART_read(uart, &input_x, 4);
+      UART_read(uart, &input, 2);
 
-      //give lcd mail box buffer the input
-      lcd_message.buffer[0] = input_x[0];
-      lcd_message.buffer[1] = input_x[1];
-      lcd_message.buffer[2] = input_x[2];
-      lcd_message.buffer[3] = input_x[3];
+      if(input[0] == '$' && input[1] == '$') {
+        P2OUT &= ~BIT1;
+        P1OUT |= BIT0;
+        BIOS_exit(1);
+      }
+      rx = (int)input[1];
 
-      lcd_message.position = 1;
+      if(input[0] == '-') {
+        rx = 0 - rx; 
+      }
 
-      Mailbox_post(LCD_Mbx, &lcd_message, BIOS_WAIT_FOREVER);
-      MAP_Interrupt_enableInterrupt(INT_ADC14);
-    }
+      if((counter % 3) == 0) {
+      total_x = total_x + rx;
+      } else if ((counter % 3) == 1) {
+      total_y = total_y + rx;
+      } else {
+      total_z = total_z + rx;
+      }
+
+      counter++;
+
+      if(counter > 50) {
+
+
+          average_x = total_x/counter;
+          average_y = total_y/counter;
+          average_z = total_z/counter;
+          combine_ints_to_string(average_x, average_y, average_z, 15,lcd_message.buffer);
+          counter = 0;
+          total_x = 0;
+          total_y = 0;
+          total_z = 0;
+
+          lcd_message.position = 1;
+          Mailbox_post(LCD_Mbx, &lcd_message, BIOS_WAIT_FOREVER);
+      }
+        MAP_Interrupt_enableInterrupt(INT_ADC14);
+  }
 }

@@ -15,6 +15,8 @@ void init_lcd()
 {
 	P2OUT &= ~BIT1;
 	P2DIR |= BIT1; //for green led
+	P1OUT |= BIT0;
+	P1DIR |= BIT0; //for green led
     /* Initializes display */
     Crystalfontz128x128_Init();
 
@@ -46,32 +48,49 @@ void init_lcd()
                                      64,
                                      30,
                                      OPAQUE_TEXT);
+    Graphics_drawStringCentered(&g_sContext,
+                                    "Dataset",
+                                     AUTO_STRING_LENGTH,
+                                     64,
+                                     64,
+                                     OPAQUE_TEXT);
+    Graphics_drawStringCentered(&g_sContext,
+                                    "   x   y   z   ",
+                                     AUTO_STRING_LENGTH,
+                                     64,
+                                     74,
+                                     OPAQUE_TEXT);
 }
 void write_lcd(int8_t input[], int position)
 {
-
-
 	if(position > 1) {
-    Graphics_drawStringCentered(&g_sContext,
-                                    "                ",
-                                     AUTO_STRING_LENGTH,
-                                     64,
-                                     40,
-                                     OPAQUE_TEXT);
-	Graphics_drawStringCentered(&g_sContext,
-	                            input,
-	                            AUTO_STRING_LENGTH,
-	                            64,
-	                            40,
-	                            OPAQUE_TEXT);
+
+      Graphics_drawStringCentered(&g_sContext,
+                                  "                ",
+                                  AUTO_STRING_LENGTH,
+                                  64,
+                                  40,
+                                  OPAQUE_TEXT);
+      Graphics_drawStringCentered(&g_sContext,
+                                  input,
+                                  AUTO_STRING_LENGTH,
+                                  64,
+                                  40,
+                                  OPAQUE_TEXT);
 	} else {
 
-	Graphics_drawStringCentered(&g_sContext,
-                              input,
-                              AUTO_STRING_LENGTH,
-                              64,
-                              80,
-                              OPAQUE_TEXT);
+      Graphics_drawStringCentered(&g_sContext,
+                                  "                ",
+                                  AUTO_STRING_LENGTH,
+                                  64,
+                                  90,
+                                  OPAQUE_TEXT);
+      Graphics_drawStringCentered(&g_sContext,
+                                  input,
+                                  AUTO_STRING_LENGTH,
+                                  64,
+                                  90,
+                                  OPAQUE_TEXT);
 	}
 
 }
@@ -133,4 +152,28 @@ void combine_ints_to_string(int x, int y, int z, int n, int8_t s[]) {
    s[index+10] = z_buff[index];
  }
 }
+int string_to_int(int8_t s[]) {
 
+  int final = 0;
+
+  int index = 3;
+
+  int place = 1;
+  while(s[index] == ' ') {
+      index--;
+  }
+
+  while(index >= 0) {
+
+      if( s[index] == '-') {
+
+        final = 0 - final;
+        break;
+      }
+      final = final + (s[index] - 48 ) * place;
+
+      place = place * 10;  
+      index--;
+  }
+  return final;
+}

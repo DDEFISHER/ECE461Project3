@@ -1737,8 +1737,8 @@ __T1_ti_sysbios_knl_Task_Instance_State__stack ti_sysbios_knl_Task_Instance_Stat
 #endif
 #endif
 
-/* --> echoFxn */
-extern xdc_Void echoFxn(xdc_UArg,xdc_UArg);
+/* --> uartFxn */
+extern xdc_Void uartFxn(xdc_UArg,xdc_UArg);
 #ifdef __IAR_SYSTEMS_ICC__
     #pragma data_alignment=8
 #endif
@@ -6815,7 +6815,7 @@ ti_sysbios_knl_Task_Object__ ti_sysbios_knl_Task_Object__table__V[4] = {
         (xdc_SizeT)0x400,  /* stackSize */
         ((void*)ti_sysbios_knl_Task_Instance_State_0_stack__A),  /* stack */
         0,  /* stackHeap */
-        ((xdc_Void(*)(xdc_UArg,xdc_UArg))((xdc_Fxn)echoFxn)),  /* fxn */
+        ((xdc_Void(*)(xdc_UArg,xdc_UArg))((xdc_Fxn)uartFxn)),  /* fxn */
         ((xdc_UArg)(0x0)),  /* arg0 */
         ((xdc_UArg)(0x0)),  /* arg1 */
         ((xdc_Ptr)0),  /* env */
